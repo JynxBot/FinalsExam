@@ -1,6 +1,6 @@
-# Activity 2 Commit
+# Activity 2 Commitgit 
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+Website for activity react webdev
 
 ## What's next? How do I make an app with this?
 
