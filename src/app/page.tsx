@@ -16,21 +16,30 @@ export default function BentoGrid1() {
       title: "Freudian",
       description: "Daniel Caesar's soulful breakthrough album.",
       image: "/images/freudian.jpg",
+      // Spotify search for the album/artist — replace with exact album URL if you have one
+      spotifyUrl:
+        "https://open.spotify.com/search/Freudian%20Daniel%20Caesar",
     },
     {
       title: "Case Study 01",
       description: "Exploring jazz and R&B vibes.",
       image: "/images/casestudy.jpg",
+      spotifyUrl:
+        "https://open.spotify.com/search/Case%20Study%2001%20Daniel%20Caesar",
     },
     {
       title: "Never Enough",
       description: "Smooth, emotional tracks to vibe to.",
       image: "/images/neverenough.png",
+      spotifyUrl:
+        "https://open.spotify.com/search/Never%20Enough%20Daniel%20Caesar",
     },
     {
       title: "Son of Spergy",
       description: "Experimental and soulful modern sounds.",
       image: "/images/sonofspergy.png",
+      spotifyUrl:
+        "https://open.spotify.com/search/Son%20of%20Spergy",
     },
   ] as const;
 
@@ -49,9 +58,15 @@ export default function BentoGrid1() {
           </p>
         </div>
 
-        <div className="grid grid-cols-npm run dev1 gap-3 md:grid-cols-2 lg:grid-cols-3">
-          {/* Tall Feature Card - Left */}
-          <Card className="rounded-xl lg:row-span-2 hover:shadow-lg transition-all duration-300">
+        {/* Responsive bento grid:
+            - single column on mobile
+            - 2 columns on small/medium
+            - 4 columns on large
+            We use auto-rows so row-span controls card height for the 'tall' items.
+        */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 auto-rows-[200px] md:auto-rows-[220px] lg:auto-rows-[260px]">
+          {/* Tall Feature Card - Left (spans 2 rows on lg) */}
+          <Card className="rounded-xl hover:shadow-lg transition-all duration-300 row-span-1 lg:row-span-2 lg:col-span-2">
             <CardHeader>
               <CardTitle className="text-lg font-semibold">
                 {albums[0].title}
@@ -61,17 +76,26 @@ export default function BentoGrid1() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex h-full flex-col">
-              <Image
-                src={albums[0].image}
-                alt={albums[0].title}
-                width={1000}
-                height={1000}
-                className="h-full w-full object-cover rounded-md"
-              />
+              {/* image wrapper with aspect + clickable link */}
+              <a
+                href={albums[0].spotifyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative block w-full h-full rounded-md overflow-hidden"
+                aria-label={`Open ${albums[0].title} on Spotify`}
+              >
+                <Image
+                  src={albums[0].image}
+                  alt={albums[0].title}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </a>
             </CardContent>
           </Card>
 
-          {/* Regular Feature Card - Top Right */}
+          {/* Regular Feature Card */}
           <Card className="rounded-xl hover:shadow-lg transition-all duration-300">
             <CardHeader>
               <CardTitle className="text-lg font-semibold">
@@ -82,18 +106,26 @@ export default function BentoGrid1() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex h-full flex-col">
-              <Image
-                src={albums[1]?.image ?? "/images/fallback.jpg"}
-                alt={albums[1]?.title ?? "Album"}
-                width={1000}
-                height={1000}
-                className="h-full w-full object-cover md:aspect-[4/3] rounded-md"
-              />
+              <a
+                href={albums[1]?.spotifyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative block w-full h-full rounded-md overflow-hidden"
+                aria-label={`Open ${albums[1]?.title} on Spotify`}
+              >
+                <Image
+                  src={albums[1]?.image ?? "/images/fallback.jpg"}
+                  alt={albums[1]?.title ?? "Album"}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </a>
             </CardContent>
           </Card>
 
-          {/* Regular Feature Card - Bottom Right */}
-          <Card className="rounded-xl lg:col-start-2 hover:shadow-lg transition-all duration-300">
+          {/* Regular Feature Card */}
+          <Card className="rounded-xl hover:shadow-lg transition-all duration-300">
             <CardHeader>
               <CardTitle className="text-lg font-semibold">
                 {albums[2]?.title}
@@ -103,18 +135,26 @@ export default function BentoGrid1() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex h-full flex-col">
-              <Image
-                src={albums[2]?.image ?? "/images/fallback.jpg"}
-                alt={albums[2]?.title ?? "Album"}
-                width={1000}
-                height={1000}
-                className="h-full w-full object-cover md:aspect-[4/3] rounded-md"
-              />
+              <a
+                href={albums[2]?.spotifyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative block w-full h-full rounded-md overflow-hidden"
+                aria-label={`Open ${albums[2]?.title} on Spotify`}
+              >
+                <Image
+                  src={albums[2]?.image ?? "/images/fallback.jpg"}
+                  alt={albums[2]?.title ?? "Album"}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </a>
             </CardContent>
           </Card>
 
-          {/* Tall Feature Card - Right */}
-          <Card className="rounded-xl lg:col-start-3 lg:row-span-2 lg:row-start-1 hover:shadow-lg transition-all duration-300">
+          {/* Tall Feature Card - Right (spans 2 rows on lg) */}
+          <Card className="rounded-xl hover:shadow-lg transition-all duration-300 row-span-1 lg:row-span-2 lg:col-span-2">
             <CardHeader>
               <CardTitle className="text-lg font-semibold">
                 {albums[3]?.title}
@@ -124,13 +164,21 @@ export default function BentoGrid1() {
               </CardDescription>
             </CardHeader>
             <CardContent className="flex h-full flex-col">
-              <Image
-                src={albums[3]?.image ?? "/images/fallback.jpg"}
-                alt={albums[3]?.title ?? "Album"}
-                width={1000}
-                height={1000}
-                className="h-full w-full object-cover rounded-md"
-              />
+              <a
+                href={albums[3]?.spotifyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative block w-full h-full rounded-md overflow-hidden"
+                aria-label={`Open ${albums[3]?.title} on Spotify`}
+              >
+                <Image
+                  src={albums[3]?.image ?? "/images/fallback.jpg"}
+                  alt={albums[3]?.title ?? "Album"}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover"
+                />
+              </a>
             </CardContent>
           </Card>
         </div>
