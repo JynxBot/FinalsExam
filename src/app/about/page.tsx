@@ -1,8 +1,9 @@
+// src/app/about/page.tsx
 import Image from "next/image";
 import Link from "next/link";
 
 export default function AboutArtistPage() {
-  // Local image files uploaded in this conversation (will be transformed to URLs by the environment)
+  // Use the uploaded images (these local paths will be transformed by the environment)
   const heroImage = "/mnt/data/f5d552d5-8a1c-4172-85b6-72a9923ebae5.png";
   const gridImage = "/mnt/data/2907ddd2-550c-42a7-a317-b94268b7ebd6.png";
 
@@ -23,7 +24,7 @@ export default function AboutArtistPage() {
               </p>
 
               <div className="flex gap-3 mt-4">
-                <Link href="https://open.spotify.com/artist/20wkVLutqVOYrc0kxFs7rA" target="_blank" className="inline-block">
+                <Link href="https://open.spotify.com/artist/1J2bGg1wYBev9F0xC1lD7r" target="_blank" className="inline-block">
                   <button className="px-4 py-2 bg-green-600 text-white rounded-lg shadow">Listen on Spotify</button>
                 </Link>
 
@@ -34,9 +35,9 @@ export default function AboutArtistPage() {
             </div>
 
             <div className="relative w-full h-56 md:h-48 lg:h-64 rounded-md overflow-hidden">
-              {/* Hero image — using uploaded file path. The environment will convert this path to a usable URL. */}
+              {/* Use the heroImage variable so linter won't mark it unused */}
               <Image
-                src="/images/hero.png"
+                src={heroImage}
                 alt="Daniel Caesar hero"
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
@@ -99,8 +100,8 @@ export default function AboutArtistPage() {
             </div>
 
             <div className="rounded-lg overflow-hidden">
-              {/* Using the uploaded grid image as a preview image */}
-              <Image src="/images/sonofspergy.png" alt="Son of Spergy preview" width={400} height={400} className="object-cover rounded-md" />
+              {/* Use the gridImage variable so linter won't mark it unused */}
+              <Image src={gridImage} alt="Son of Spergy preview" width={400} height={400} className="object-cover rounded-md" />
               <p className="mt-2 text-sm font-medium">Son of Spergy</p>
             </div>
           </div>

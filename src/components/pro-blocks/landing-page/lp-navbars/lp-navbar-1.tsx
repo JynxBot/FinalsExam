@@ -5,8 +5,9 @@ import { Menu, X, Headphones } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
 
-// No menu items for now
-const MENU_ITEMS: any[] = [];
+type MenuItem = { label: string; href: string };
+
+const MENU_ITEMS: MenuItem[] = []; // typed instead of any
 
 interface NavMenuItemsProps {
   className?: string;
@@ -16,10 +17,7 @@ const NavMenuItems = ({ className }: NavMenuItemsProps) => (
   <div className={`flex flex-col gap-1 md:flex-row ${className ?? ""}`}>
     {MENU_ITEMS.map(({ label, href }) => (
       <Link key={label} href={href}>
-        <Button
-          variant="ghost"
-          className="w-full md:w-auto text-blue-300 hover:bg-blue-800"
-        >
+        <Button variant="ghost" className="w-full md:w-auto text-blue-300 hover:bg-blue-800">
           {label}
         </Button>
       </Link>
@@ -34,7 +32,6 @@ export function LpNavbar1() {
   return (
     <nav className="bg-black sticky top-0 isolate z-50 py-3.5 md:py-4">
       <div className="relative container m-auto flex flex-col justify-between gap-4 px-6 md:flex-row md:items-center md:gap-6">
-        {/* Logo + hamburger */}
         <div className="flex items-center justify-between">
           <Link href="/" aria-label="Go to homepage">
             <div className="w-10 h-10 bg-blue-900 rounded flex items-center justify-center">
@@ -53,50 +50,28 @@ export function LpNavbar1() {
           </Button>
         </div>
 
-        {/* Desktop Navigation */}
         <div className="hidden w-full flex-row justify-end gap-5 md:flex">
           <NavMenuItems />
 
-          {/* Shop (external) */}
-          <a
-            href="https://danielcaesar.store/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Open Daniel Caesar store (external)"
-          >
-            <Button className="bg-blue-900 text-blue-300 hover:bg-blue-800">
-              Shop
-            </Button>
+          <a href="https://danielcaesar.store/" target="_blank" rel="noopener noreferrer" aria-label="Open Daniel Caesar store (external)">
+            <Button className="bg-blue-900 text-blue-300 hover:bg-blue-800">Shop</Button>
           </a>
 
-          {/* About (internal) */}
           <Link href="/about">
-            <Button className="bg-blue-900 text-blue-300 hover:bg-blue-800">
-              About the Artist
-            </Button>
+            <Button className="bg-blue-900 text-blue-300 hover:bg-blue-800">About the Artist</Button>
           </Link>
         </div>
 
-        {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="flex w-full flex-col justify-end gap-5 pb-2.5 md:hidden">
             <NavMenuItems />
 
-            <a
-              href="https://danielcaesar.store/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Open Daniel Caesar store (external)"
-            >
-              <Button className="w-full bg-blue-900 text-blue-300 hover:bg-blue-800">
-                Shop
-              </Button>
+            <a href="https://danielcaesar.store/" target="_blank" rel="noopener noreferrer" aria-label="Open Daniel Caesar store (external)">
+              <Button className="w-full bg-blue-900 text-blue-300 hover:bg-blue-800">Shop</Button>
             </a>
 
             <Link href="/about">
-              <Button className="w-full bg-blue-900 text-blue-300 hover:bg-blue-800">
-                About the Artist
-              </Button>
+              <Button className="w-full bg-blue-900 text-blue-300 hover:bg-blue-800">About the Artist</Button>
             </Link>
           </div>
         )}
