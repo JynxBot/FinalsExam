@@ -1,16 +1,14 @@
-// src/app/about/page.tsx
+
 import Image from "next/image";
 import Link from "next/link";
 
 export default function AboutArtistPage() {
-  // Use the uploaded images (these local paths will be transformed by the environment)
   const heroImage = "/mnt/data/f5d552d5-8a1c-4172-85b6-72a9923ebae5.png";
   const gridImage = "/mnt/data/2907ddd2-550c-42a7-a317-b94268b7ebd6.png";
 
   return (
     <main className="min-h-screen bg-gray-50 py-12">
       <div className="container mx-auto px-6 lg:px-20">
-        {/* Hero */}
         <section className="bg-white rounded-2xl shadow-sm overflow-hidden mb-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center p-8">
             <div className="md:col-span-2">
@@ -35,7 +33,6 @@ export default function AboutArtistPage() {
             </div>
 
             <div className="relative w-full h-56 md:h-48 lg:h-64 rounded-md overflow-hidden">
-              {/* Use the heroImage variable so linter won't mark it unused */}
               <Image
                 src={heroImage}
                 alt="Daniel Caesar hero"
@@ -47,12 +44,11 @@ export default function AboutArtistPage() {
           </div>
         </section>
 
-        {/* Bio & Highlights */}
         <section className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           <div className="lg:col-span-2 bg-white rounded-2xl p-6 shadow-sm">
             <h2 className="text-2xl font-semibold mb-3">Biography</h2>
             <p className="text-gray-700 mb-4">
-              Born in Toronto, Daniel Caesar began releasing music in the early 2010s. His 2014 EPs and the 2017 full-length <em>Freudian</em> earned wide praise for their honest lyricism and warm, analog production. Caesar's work often bridges traditional gospel textures with modern R&amp;B production, and his live performances are noted for their intimacy and emotional power.
+              Born in Toronto, Daniel Caesar began releasing music in the early 2010s. His 2014 EPs and the 2017 full-length <em>Freudian</em> earned wide praise for their honest lyricism and warm, analog production. Caesar&apos;s work often bridges traditional gospel textures with modern R&amp;B production, and his live performances are noted for their intimacy and emotional power.
             </p>
 
             <h3 className="text-xl font-medium mt-4 mb-2">Career highlights</h3>
@@ -64,7 +60,7 @@ export default function AboutArtistPage() {
 
             <h3 className="text-xl font-medium mt-4 mb-2">Musical style</h3>
             <p className="text-gray-700 mb-2">
-              Caesar's music blends R&amp;B, soul, gospel, and alternative production. His arrangements favor intimate instrumentation — guitar, warm keys, and sparse percussion — which places focus on vocal emotion and lyrical content.
+              Caesar&apos;s music blends R&amp;B, soul, gospel, and alternative production. His arrangements favor intimate instrumentation — guitar, warm keys, and sparse percussion — which places focus on vocal emotion and lyrical content.
             </p>
           </div>
 
@@ -79,7 +75,6 @@ export default function AboutArtistPage() {
           </aside>
         </section>
 
-        {/* Discography grid (small preview) */}
         <section className="bg-white rounded-2xl p-6 shadow-sm mb-8">
           <h2 className="text-2xl font-semibold mb-4">Selected Discography</h2>
 
@@ -100,14 +95,12 @@ export default function AboutArtistPage() {
             </div>
 
             <div className="rounded-lg overflow-hidden">
-              {/* Use the gridImage variable so linter won't mark it unused */}
               <Image src={gridImage} alt="Son of Spergy preview" width={400} height={400} className="object-cover rounded-md" />
               <p className="mt-2 text-sm font-medium">Son of Spergy</p>
             </div>
           </div>
         </section>
 
-        {/* CTA */}
         <section className="text-center">
           <p className="text-gray-600 mb-4">Want to hear more?</p>
           <Link href="https://open.spotify.com/artist/1J2bGg1wYBev9F0xC1lD7r" target="_blank">
